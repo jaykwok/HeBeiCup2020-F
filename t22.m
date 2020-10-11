@@ -130,12 +130,12 @@ for i=2:1:max
     end
 end
 
-
+%{
 fileID = fopen('data_t22.txt','a');
 fprintf(fileID,'%d\r\n',nack_index/samp_freq);
 fclose(fileID);
+%}
 
-%{
 plot(f_simu(nack_index-T:nack_index));hold on;
 plot(f_real(nack_index-T:nack_index));hold off;
 title(['周期未知的情况下，干扰机跳频频率为',num2str(samp_freq),'时的反制频率和飞控信号对比图']);
@@ -145,7 +145,7 @@ axis square;
 legend({'干扰机模拟信号频率','飞控信号实际频率'},'Location','southeast')
 
 disp(['反制成功所花费的时间为:',num2str(nack_index/samp_freq)]);
-%}
+
 function f=f_raw(t)%无人机在t时刻的飞控信号频率
 global raw;
 global freq;
